@@ -6,8 +6,7 @@ The project is being developed as an exercise to explore:
 
 - multidimensional Monte Carlo integration
 - error estimation
-- uniform sampling
-- stratified sampling
+- sampling methods
 - automated testing
 - benchmarking
 
@@ -22,14 +21,7 @@ The project is being developed as an exercise to explore:
 
 ```python
 def f(x):
-    return x[0] + x[1]
+    return x[0]+x[1]
 
-estimate, error = montecarlo_integration(
-    f,
-    [(0, 2), (0, 3)],
-    100,
-    sampler=uniform,
-    repeats=50
-)
-
+estimate,error = montecarlo_integration(f,[(0, 2), (0, 3)],100,sampler=uniform,repeats=50)
 print(estimate, error)
