@@ -5,6 +5,26 @@ import numpy as np
 from itertools import product
 
 # =============================================================================
+# EXAMPLES
+# =============================================================================
+
+if __name__ == "__main__":
+
+    def f(x):
+        return x[0]**2
+
+    def g(x):
+        return x[0]+x[1]
+
+
+    est_u, err_u = montecarlo_integration(g, [(0, 2), (0, 3)], 100,sampler=uniform,repeats=50)
+
+    est_s, err_s = montecarlo_integration(g, [(0, 2), (0, 3)], 100,sampler=stratified_uniform,repeats=50)
+
+    print("Uniform:", est_u, err_u)
+    print("Stratified:", est_s, err_s)
+
+# =============================================================================
 # SAMPLING METHODS
 # =============================================================================
 
@@ -120,21 +140,3 @@ def montecarlo_integration(function,bounds,samples,sampler=uniform,repeats=10):
 
     return mean_estimate,error
 
-
-# =============================================================================
-# EXAMPLES
-# =============================================================================
-
-def f(x):
-    return x[0]**2
-
-def g(x):
-    return x[0]+x[1]
-
-
-est_u, err_u = montecarlo_integration(g, [(0, 2), (0, 3)], 100,sampler=uniform,repeats=50)
-
-est_s, err_s = montecarlo_integration(g, [(0, 2), (0, 3)], 100,sampler=stratified_uniform,repeats=50)
-
-print("Uniform:", est_u, err_u)
-print("Stratified:", est_s, err_s)
