@@ -1,7 +1,5 @@
 import time
-from montecarlo_integration import uniform
-from montecarlo_integration import stratified_uniform
-from montecarlo_integration import montecarlo_integration
+from mc_integration import (uniform, stratified_uniform,estimate_once,montecarlo_integration)
 import numpy as np
 
 def g(x):

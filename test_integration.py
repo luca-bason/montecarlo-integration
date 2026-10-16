@@ -1,7 +1,4 @@
-from montecarlo_integration import estimate_once
-from montecarlo_integration import uniform
-from montecarlo_integration import stratified_uniform
-from montecarlo_integration import montecarlo_integration
+from mc_integration import (uniform, stratified_uniform,estimate_once,montecarlo_integration)
 import pytest
 import numpy as np
 
