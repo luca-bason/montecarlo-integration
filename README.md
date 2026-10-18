@@ -1,27 +1,40 @@
 # Monte Carlo Integration
 
-Small Python library for multidimensional Monte Carlo integration.
+A small Python library for multidimensional Monte Carlo integration over rectangular domains.
 
-The project is being developed as an exercise to explore:
+## Features
 
-- multidimensional Monte Carlo integration
-- error estimation
-- sampling methods
-- automated testing
-- benchmarking
+- Uniform and stratified sampling in N dimensions
+- Error estimation using independent repetitions
+- Automated tests and benchmarks
 
-## Current features
+## Installation
 
-- Uniform random sampling in N dimensions
-- Stratified sampling in N dimensions
-- Monte Carlo integration over rectangular domains
-- Error estimation using repeated independent runs
+From the project directory:
+
+```bash
+python -m pip install .
+```
+
+For development (includes pytest): `python -m pip install -e ".[dev]"`
 
 ## Example
 
 ```python
-def f(x):
-    return x[0]+x[1]
+from mc_integration import montecarlo_integration, uniform
 
-estimate,error = montecarlo_integration(f,[(0, 2), (0, 3)],100,sampler=uniform,repeats=50)
-print(estimate, error)
+def f(x):
+    return x[0] + x[1]
+
+estimate, error = montecarlo_integration(
+    f, [(0, 2), (0, 3)], samples=100,
+    sampler=uniform, repeats=50
+)
+print(estimate, error)  # Exact integral: 15
+```
+
+Use `stratified_uniform` for stratified sampling; in `d` dimensions, `samples` must be a perfect `d`-th power.
+
+## Tests and benchmarks
+
+Run `python -m pytest -v` and `python benchmark.py` from the project directory.
